@@ -1,0 +1,13 @@
+{
+  "extends": "eslint-config-airbnb",
+  "rules": {
+    "indent": ["error", 2],
+    "react/prefer-stateless-function": 0,
+    "no-unused-expressions": 0,
+    "react/jsx-filename-extension": 0
+  },
+  "globals": {
+    "window": true,
+    "document": true
+  }
+}

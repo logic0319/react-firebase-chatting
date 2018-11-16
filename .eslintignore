@@ -1,0 +1,12 @@
+# Third party
+**/node_modules
+
+#test
+src/test
+
+#build files
+build/
+
+#react default file
+src/serviceWorker.js
+
