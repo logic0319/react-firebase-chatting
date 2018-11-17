@@ -1,0 +1,17 @@
+@import "../../styles/variable";
+
+.title {
+  font-size: 18px;
+  color: $color-red-dark;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.message {
+  color: $color-grey-dark;
+  font-weight: bolder;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 1.5rem;
+  background-color: rgba($color-red-light, .3);
+  margin: 1rem 0;
+}

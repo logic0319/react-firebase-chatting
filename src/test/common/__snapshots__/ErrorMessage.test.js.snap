@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorMessage 초기 렌더링 스냅샷 일치함 1`] = `
+<div
+  className="message"
+>
+  <h3
+    className="title"
+  >
+    ERROR
+  </h3>
+  <p>
+    error message
+  </p>
+</div>
+`;
