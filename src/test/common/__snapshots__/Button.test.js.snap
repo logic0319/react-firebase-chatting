@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button 초기 렌더링 스냅샷 일치함 1`] = `
+<button
+  className="button undefined"
+  onClick={[Function]}
+  type="button"
+>
+  버튼
+</button>
+`;
