@@ -5,6 +5,7 @@ import Button from '../common/Button';
 import ErrorMessage from '../common/ErrorMessage';
 import firebase from '../../firebase';
 import styles from './Login.module.scss';
+import { Link } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -103,6 +104,10 @@ class Login extends Component {
               {this.displayErrors(errors)}
             </ErrorMessage>
           )}
+          <p className={styles['login-info']}>
+            {'처음 방문하셨나요? '}
+            <Link to="/register">회원가입</Link>
+          </p>
           <div className={styles['button-wrapper']}>
             <Button onClick={this.handleSubmit}>로그인</Button>
           </div>

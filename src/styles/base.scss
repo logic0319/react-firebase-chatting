@@ -22,3 +22,18 @@ html {
     font-size: 75%; //1rem = 12, 12/16
   }
 }
+
+a{
+  &:link,
+  &:visited {
+    color: $color-primary-dark;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+
+  &:hover,
+  &:active {
+    color: $color-primary;
+  }
+}

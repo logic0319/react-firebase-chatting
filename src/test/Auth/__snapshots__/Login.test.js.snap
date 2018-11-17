@@ -26,6 +26,17 @@ exports[`Login 초기 렌더링 스냅샷 일치함 1`] = `
       type="password"
       value=""
     />
+    <p
+      className="login-info"
+    >
+      처음 방문하셨나요? 
+      <Link
+        replace={false}
+        to="/register"
+      >
+        회원가입
+      </Link>
+    </p>
     <div
       className="button-wrapper"
     >

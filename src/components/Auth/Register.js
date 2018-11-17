@@ -6,6 +6,7 @@ import Button from '../common/Button';
 import ErrorMessage from '../common/ErrorMessage';
 import firebase from '../../firebase';
 import styles from './Register.module.scss';
+import { Link } from 'react-router-dom';
 
 
 class Register extends Component {
@@ -144,6 +145,10 @@ class Register extends Component {
               {this.displayErrors(errors)}
             </ErrorMessage>
           )}
+          <p className={styles['register-info']}>
+            {'이미 가입하셨나요? '}
+            <Link to="/login">로그인</Link>
+          </p>
           <div className={styles['button-wrapper']}>
             <Button onClick={this.handleSubmit}>회원가입</Button>
           </div>
