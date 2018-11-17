@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login 초기 렌더링 스냅샷 일치함 1`] = `
+<section>
+  <Form
+    className="login-form"
+  >
+    <h1
+      className="title"
+    >
+      OPEN CHAT
+    </h1>
+    <Input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="이메일"
+      type="email"
+      value=""
+    />
+    <Input
+      id="password"
+      name="password"
+      onChange={[Function]}
+      placeholder="비밀번호(최소 6자)"
+      type="password"
+      value=""
+    />
+    <div
+      className="button-wrapper"
+    >
+      <Button
+        onClick={[Function]}
+      >
+        로그인
+      </Button>
+    </div>
+  </Form>
+</section>
+`;
