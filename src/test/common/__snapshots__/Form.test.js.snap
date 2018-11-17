@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form 초기 렌더링 스냅샷 일치함 1`] = `
+<form
+  className="form undefined"
+  onSubmit={[Function]}
+>
+  <input
+    type="text"
+  />
+</form>
+`;

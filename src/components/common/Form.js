@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from './Form.module.scss';
 
-const Form = () => (
-  <form>
+class Form extends Component {
+  handleSubmit = (e) => {
+    const { onSubmit } = this.props;
+    onSubmit(e);
+  };
 
-  </form>
-);
+  render() {
+    const { children, className } = this.props;
+    return (
+      <form className={`${styles.form} ${className}`} onSubmit={this.handleSubmit}>
+        {children}
+      </form>
+    );
+  }
+}
+
+Form.propTypes = {
+  children: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
 
 export default Form;
