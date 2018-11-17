@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input 초기 렌더링 스냅샷 일치함 1`] = `
+<Fragment>
+  <input
+    className="input undefined"
+    id="email"
+    name="email"
+    onChange={[Function]}
+    placeholder="Email"
+    type="email"
+    value="nick@naver.com"
+  />
+  <label
+    className="label"
+    htmlFor="email"
+  >
+    Email
+  </label>
+</Fragment>
+`;
