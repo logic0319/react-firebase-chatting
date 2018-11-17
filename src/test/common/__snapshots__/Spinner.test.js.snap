@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner 초기 렌더링 스냅샷 일치함 1`] = `
+<div
+  className="dimmer"
+>
+  <onlyUpdateForKeys(Loader)
+    className=""
+    color="#28b485"
+    loading={true}
+    size={60}
+    sizeUnit="px"
+  />
+</div>
+`;
