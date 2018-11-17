@@ -5,7 +5,7 @@ import styles from './Button.module.scss';
 class Button extends Component {
   handleClick = (e) => {
     const { onClick } = this.props;
-    onClick(e);
+    onClick && onClick(e);
   };
 
   render() {
@@ -27,7 +27,7 @@ class Button extends Component {
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   loader: PropTypes.bool,
   disabled: PropTypes.bool,
   className: PropTypes.string,

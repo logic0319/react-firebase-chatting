@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register 초기 렌더링 스냅샷 일치함 1`] = `
+<section>
+  <Form
+    className="register-form"
+  >
+    <h1
+      className="title"
+    >
+      OPEN CHAT
+    </h1>
+    <Input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="이메일"
+      type="email"
+      value=""
+    />
+    <Input
+      id="username"
+      name="username"
+      onChange={[Function]}
+      placeholder="별명"
+      type="text"
+      value=""
+    />
+    <Input
+      id="password"
+      name="password"
+      onChange={[Function]}
+      placeholder="비밀번호"
+      type="password"
+      value=""
+    />
+    <Input
+      id="passwordConfirmation"
+      name="passwordConfirmation"
+      onChange={[Function]}
+      placeholder="비밀번호 확인"
+      type="password"
+      value=""
+    />
+    <div
+      className="button-wrapper"
+    >
+      <Button
+        onClick={[Function]}
+      >
+        회원가입
+      </Button>
+    </div>
+  </Form>
+</section>
+`;

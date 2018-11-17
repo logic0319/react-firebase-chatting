@@ -1,11 +1,15 @@
 {
   "extends": "eslint-config-airbnb",
+  "parser": "babel-eslint",
   "rules": {
     "indent": ["error", 2],
     "react/prefer-stateless-function": 0,
     "no-unused-expressions": 0,
     "react/jsx-filename-extension": 0,
-    "react/forbid-prop-types": 0
+    "react/forbid-prop-types": 0,
+    "react/require-default-props": 0,
+    "jsx-a11y/label-has-for": 0,
+    "no-console": 0
   },
   "globals": {
     "window": true,

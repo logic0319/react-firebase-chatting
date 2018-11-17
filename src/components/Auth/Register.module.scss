@@ -1,0 +1,15 @@
+@import "../../styles/variable";
+
+.title {
+  font-size: 2.3rem;
+  color: $color-primary-dark;
+  margin-bottom: 2rem;
+}
+.register-form {
+  margin: 15rem auto 0 auto;
+  background-color: $color-grey-light-2;
+}
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
