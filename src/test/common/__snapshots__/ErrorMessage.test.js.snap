@@ -7,7 +7,7 @@ exports[`ErrorMessage 초기 렌더링 스냅샷 일치함 1`] = `
   <h3
     className="title"
   >
-    ERROR
+    (ㅇ.ㅇ)!!
   </h3>
   <p>
     error message

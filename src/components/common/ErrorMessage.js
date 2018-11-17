@@ -7,7 +7,7 @@ class ErrorMessage extends Component {
     const { children } = this.props;
     return (
       <div className={styles.message}>
-        <h3 className={styles.title}>ERROR</h3>
+        <h3 className={styles.title}>(ㅇ.ㅇ)!!</h3>
         {children}
       </div>
     );

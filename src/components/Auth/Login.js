@@ -14,6 +14,7 @@ class Login extends Component {
     password: '',
     errors: [],
     usersRef: firebase.database().ref('users'),
+    loading: false,
   };
 
   isFormValid = () => {
@@ -22,7 +23,7 @@ class Login extends Component {
 
     if (this.isFormEmpty(this.state)) {
       error = { message: '모든 필드를 채워 주세요!' };
-      this.setState({ errors: errors.concat(error) });
+      this.setState({ errors: errors.concat(error), loading: false });
       return false;
     }
     return true;
@@ -40,7 +41,7 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ errors: [] }, () => {
+    this.setState({ errors: [], loading: true }, () => {
       const { email, password, errors } = this.state;
       if (this.isFormValid(this.state)) {
         firebase
@@ -54,19 +55,19 @@ class Login extends Component {
             if (err.code === 'auth/wrong-password') {
               const error = { message: '비밀번호가 유효하지 않습니다.' };
               this.setState({
-                errors: errors.concat(error),
+                errors: errors.concat(error), loading: false,
               });
             }
             if (err.code === 'auth/user-not-found') {
               const error = { message: '가입되지 않은 이메일 입니다' };
               this.setState({
-                errors: errors.concat(error),
+                errors: errors.concat(error), loading: false,
               });
             }
             if (err.code === 'auth/invalid-email') {
               const error = { message: '이메일을 확인해 주세요' };
               this.setState({
-                errors: errors.concat(error),
+                errors: errors.concat(error), loading: false,
               });
             }
           });
@@ -76,7 +77,7 @@ class Login extends Component {
 
   render() {
     const {
-      email, password, errors,
+      email, password, errors, loading,
     } = this.state;
 
     return (
@@ -109,7 +110,13 @@ class Login extends Component {
             <Link to="/register">회원가입</Link>
           </p>
           <div className={styles['button-wrapper']}>
-            <Button onClick={this.handleSubmit}>로그인</Button>
+            <Button
+              disabled={loading}
+              loader={loading}
+              onClick={this.handleSubmit}
+            >
+            로그인
+            </Button>
           </div>
         </Form>
       </section>
