@@ -16,6 +16,7 @@ class Register extends Component {
     password: '',
     passwordConfirmation: '',
     errors: [],
+    loading: false,
     usersRef: firebase.database().ref('users'),
   };
 
@@ -25,11 +26,11 @@ class Register extends Component {
 
     if (this.isFormEmpty(this.state)) {
       error = { message: '모든 필드를 채워 주세요!' };
-      this.setState({ errors: errors.concat(error) });
+      this.setState({ errors: errors.concat(error), loading: false });
       return false;
     } if (!this.isPasswordValid(this.state)) {
       error = { message: '비밀번호가 유효하지 않습니다.' };
-      this.setState({ errors: errors.concat(error) });
+      this.setState({ errors: errors.concat(error), loading: false });
       return false;
     }
     return true;
@@ -56,39 +57,40 @@ class Register extends Component {
   };
 
   handleSubmit = (event) => {
-    const {
-      email, password, username, errors,
-    } = this.state;
-    this.setState({ errors: [] });
-    if (this.isFormValid()) {
-      event.preventDefault();
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then((createdUser) => {
-          console.log(createdUser);
-          createdUser.user
-            .updateProfile({
-              displayName: username,
-              photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`,
-            })
-            .then(() => {
-              this.saveUser(createdUser).then(() => {
-                console.log('user saved');
+    event.preventDefault();
+    this.setState({ errors: [], loading: true }, () => {
+      const {
+        email, password, username, errors,
+      } = this.state;
+      if (this.isFormValid()) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(email, password)
+          .then((createdUser) => {
+            console.log(createdUser);
+            createdUser.user
+              .updateProfile({
+                displayName: username,
+                photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`,
+              })
+              .then(() => {
+                this.saveUser(createdUser).then(() => {
+                  console.log('user saved');
+                });
+              })
+              .catch((err) => {
+                console.error(err);
               });
-            })
-            .catch((err) => {
-              console.error(err);
-            });
-        })
-        .catch((err) => {
-          if (err.code === 'auth/email-already-in-use') {
-            const error = { message: '이미 가입된 이메일 입니다.' };
-            this.setState({ errors: errors.concat(error) });
-          }
-          console.error(err);
-        });
-    }
+          })
+          .catch((err) => {
+            if (err.code === 'auth/email-already-in-use') {
+              const error = { message: '이미 가입된 이메일 입니다.' };
+              this.setState({ errors: errors.concat(error), loading: false });
+            }
+            console.error(err);
+          });
+      }
+    });
   };
 
   saveUser = (createdUser) => {
@@ -101,7 +103,7 @@ class Register extends Component {
 
   render() {
     const {
-      username, email, password, passwordConfirmation, errors,
+      username, email, password, passwordConfirmation, errors, loading,
     } = this.state;
 
     return (
@@ -150,7 +152,13 @@ class Register extends Component {
             <Link to="/login">로그인</Link>
           </p>
           <div className={styles['button-wrapper']}>
-            <Button onClick={this.handleSubmit}>회원가입</Button>
+            <Button
+              disabled={loading}
+              loader={loading}
+              onClick={this.handleSubmit}
+            >
+            회원가입
+            </Button>
           </div>
         </Form>
       </section>

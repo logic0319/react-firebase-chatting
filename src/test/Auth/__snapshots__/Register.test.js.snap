@@ -57,6 +57,8 @@ exports[`Register 초기 렌더링 스냅샷 일치함 1`] = `
       className="button-wrapper"
     >
       <Button
+        disabled={false}
+        loader={false}
         onClick={[Function]}
       >
         회원가입
