@@ -4,10 +4,19 @@ exports[`SidePanel 초기 렌더링 스냅샷 일치함 1`] = `
 <div
   className="side-panel"
 >
-  <WithStyles(Icon)
-    className="icon"
+  <button
+    onClick={[Function]}
+    type="button"
   >
-    add_box
-  </WithStyles(Icon)>
+    <WithStyles(Icon)
+      className="icon"
+    >
+      add_box
+    </WithStyles(Icon)>
+  </button>
+  <CreateRoomModal
+    closeModal={[Function]}
+    isOpen={false}
+  />
 </div>
 `;
