@@ -1,0 +1,27 @@
+@import "../../styles/variable";
+
+.message {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.message-content {
+  border-left: 1.5px solid $color-tertiary-dark;
+  padding-left: .5rem;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  margin-right: .5rem;
+}
+
+.message-text {
+  margin-top: 0.5rem;
+  font-size: 14px;
+}
+
+.display-name {
+  font-size: 14px;
+  font-weight: bold;
+}
