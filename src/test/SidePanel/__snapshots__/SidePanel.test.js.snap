@@ -14,7 +14,7 @@ exports[`SidePanel 초기 렌더링 스냅샷 일치함 1`] = `
       add_box
     </WithStyles(Icon)>
   </button>
-  <CreateRoomModal
+  <Connect(CreateRoomModal)
     closeModal={[Function]}
     isOpen={false}
   />

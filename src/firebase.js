@@ -5,12 +5,12 @@ import 'firebase/storage';
 
 // firebase 설정
 const config = {
-  apiKey: '',
-  authDomain: '',
-  databaseURL: '',
-  projectId: '',
+  apiKey: 'AIzaSyCHIqTNZgs16joWoQL0cFuxylsszUeJY0g',
+  authDomain: 'react-fireabse-chatting.firebaseapp.com',
+  databaseURL: 'https://react-fireabse-chatting.firebaseio.com',
+  projectId: 'react-fireabse-chatting',
   storageBucket: '',
-  messagingSenderId: '',
+  messagingSenderId: '8672500514',
 };
 firebase.initializeApp(config);
 

@@ -7,7 +7,7 @@ import '../styles/main.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-class App extends Component {
+export class App extends Component {
   render() {
     const { currentUser } = this.props;
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '../components/App';
+import { App } from '../components/App';
 import {shallow} from "enzyme/build";
 
 describe('Register', () => {
