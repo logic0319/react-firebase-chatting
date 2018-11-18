@@ -14,12 +14,14 @@ export class App extends Component {
     return (
       <div className={styles.App}>
         <SidePanel
+          key={currentUser && currentUser.id}
           currentUser={currentUser}
         />
         <RoomList
           currentUser={currentUser}
         />
         <Messages
+          key={currentRoom && currentRoom.id}
           currentUser={currentUser}
           currentRoom={currentRoom}
         />
