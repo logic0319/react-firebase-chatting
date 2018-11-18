@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidePanel 초기 렌더링 스냅샷 일치함 1`] = `
+<section
+  className="room-list"
+>
+  <h1
+    className="title"
+  >
+    OPEN CHAT
+  </h1>
+  <div
+    className="spinner-wrapper"
+  >
+    <onlyUpdateForKeys(Loader)
+      className=""
+      color="#ffffff"
+      loading={true}
+      size={35}
+      sizeUnit="px"
+    />
+  </div>
+</section>
+`;

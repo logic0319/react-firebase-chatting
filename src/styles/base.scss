@@ -49,7 +49,9 @@ button {
 }
 
 h1 {
-  font-size: 2.3rem;
-  color: $color-primary-dark;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
 }
