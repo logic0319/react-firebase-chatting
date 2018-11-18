@@ -83,7 +83,7 @@ class Login extends Component {
     return (
       <section>
         <Form className={styles['login-form']}>
-          <h1 className={styles.title}>OPEN CHAT</h1>
+          <h1>OPEN CHAT</h1>
           <Input
             id="email"
             value={email}

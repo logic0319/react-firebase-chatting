@@ -5,9 +5,7 @@ exports[`Login 초기 렌더링 스냅샷 일치함 1`] = `
   <Form
     className="login-form"
   >
-    <h1
-      className="title"
-    >
+    <h1>
       OPEN CHAT
     </h1>
     <Input

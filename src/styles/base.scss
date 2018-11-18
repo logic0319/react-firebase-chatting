@@ -9,7 +9,7 @@
 html {
   // This defines what 1rem is
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
-
+  box-sizing: border-box;
   @include respond(tab-land) { // width < 1200?
     font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
   }
@@ -36,4 +36,20 @@ a{
   &:active {
     color: $color-primary;
   }
+}
+
+// button init
+
+button {
+  border: none;
+  background: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+h1 {
+  font-size: 2.3rem;
+  color: $color-primary-dark;
+  margin-bottom: 2rem;
 }
