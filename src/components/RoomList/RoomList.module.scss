@@ -10,11 +10,13 @@
 .room-name {
   font-size: 16px;
   color: $color-grey-dark;
+  width: 100%;
   padding: 1rem 1rem 1rem 2rem;
+  text-align: left;
   &:hover {
     color: $color-grey-light-2;
     cursor: pointer;
-    background-color: rgba($color-secondary-dark, .4);
+    background-color: rgba($color-secondary-dark, .2);
   }
 }
 
@@ -24,6 +26,9 @@
   color: $color-white;
 }
 
+.active {
+  background-color: rgba($color-secondary-dark, .4);
+}
 
 .spinner-wrapper {
   display: flex;

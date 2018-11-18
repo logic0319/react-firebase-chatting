@@ -8,9 +8,10 @@ import { setCurrentRoom } from '../../actions';
 
 class RoomList extends Component {
   state = {
+    activeRoom: '',
+    room: null,
     user: this.props.currentUser,
     usersRef: firebase.database().ref('users'),
-    room: null,
     rooms: [],
     loading: true,
     firstLoad: true,
@@ -32,8 +33,19 @@ class RoomList extends Component {
     if (this.state.firstLoad && this.state.rooms.length > 0) {
       this.props.setCurrentRoom(firstRoom);
       this.setState({ room: firstRoom });
+      this.setActiveRoom(firstRoom);
     }
     this.setState({ firstLoad: false });
+  };
+
+  setActiveRoom = (room) => {
+    this.setState({ activeRoom: room.id });
+  };
+
+  changeRoom = (room) => {
+    this.setActiveRoom(room);
+    this.props.setCurrentRoom(room);
+    this.setState({ room });
   };
 
   addListeners = (userId) => {
@@ -55,9 +67,14 @@ class RoomList extends Component {
 
   displayRooms = rooms => (
     rooms.length > 0 && rooms.map(room => (
-      <h3 className={styles['room-name']} key={room.id}>
+      <button
+        type="button"
+        onClick={() => this.changeRoom(room)}
+        className={`${styles['room-name']} ${this.state.activeRoom === room.id ? styles.active : ''}`}
+        key={room.id}
+      >
         {`@ ${room.name}`}
-      </h3>
+      </button>
     ))
   );
 
