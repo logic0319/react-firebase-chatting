@@ -61,7 +61,7 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <div className={styles['button-wrapper']}>
+      <div className={styles['message-form']}>
         <button type="button" className={styles['upload-button']}>
           <Icon className={styles['upload-icon']}>add_to_photos</Icon>
         </button>

@@ -1,14 +1,23 @@
 @import "../../styles/variable";
 
-.message-content {
-  height: 100%;
-  margin: 2rem 0;
-}
 .messages {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
+  position: relative;
   width: 100%;
+  height: 100vh;
+  padding: 20px;
   background-color: $color-grey-light-2;
 }
+.custom-paper {
+  width: calc(100% - 40px);
+  position: absolute;
+  top: 96px;
+  bottom: 66px;
+}
+.message-content {
+  width: calc(100% - 40px);
+  position: absolute;
+  overflow: scroll;
+  top: 20px;
+  bottom: 20px;
+}
+

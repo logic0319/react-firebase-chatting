@@ -1,7 +1,11 @@
 @import "../../styles/variable";
 
-.button-wrapper {
+.message-form {
+  position: absolute;
+  bottom: 10px;
   display: flex;
+  height: 46px;
+  width: calc(100% - 40px);
 }
 
 .upload-button {
