@@ -23,8 +23,25 @@ const userReducer = (state = initialUserState, action) => {
   }
 };
 
+const initialRoomState = {
+  currentRoom: null,
+};
+
+const roomReducer = (state = initialRoomState, action) => {
+  switch (action.type) {
+  case actionTypes.SET_CURRENT_ROOM:
+    return {
+      ...state,
+      currentRoom: action.payload.currentRoom,
+    };
+  default:
+    return state;
+  }
+};
+
 const rootReducer = combineReducers({
   user: userReducer,
+  room: roomReducer,
 });
 
 export default rootReducer;

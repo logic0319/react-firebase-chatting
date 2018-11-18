@@ -3,17 +3,75 @@ import Modal from 'react-modal';
 import Input from '../../common/Input';
 import Button from '../../common/Button';
 import firebase from '../../../firebase';
+import { connect } from 'react-redux';
+import { setCurrentRoom } from '../../../actions';
 import PropTypes from 'prop-types';
 import styles from './CreateRoomModal.module.scss';
 
 class CreateRoomModal extends Component {
   state = {
     roomName: '',
-    channelsRef: firebase.database().ref('channels'),
+    user: this.props.currentUser,
+    roomsRef: firebase.database().ref('rooms'),
+    usersRef: firebase.database().ref('users'),
   };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  createRoom = () => {
+    const {
+      roomsRef, usersRef, roomName, user,
+    } = this.state;
+    const { closeModal, setCurrentRoom } = this.props;
+    const { key } = roomsRef.push();
+
+    const newRoom = {
+      id: key,
+      name: roomName,
+    };
+
+    const createUser = {
+      id: user.uid,
+      name: user.displayName,
+      avatar: user.photoURL,
+    };
+
+    roomsRef
+      .child(key)
+      .update(newRoom)
+      .then(() => {
+        this.setState({ roomName: '' });
+        roomsRef
+          .child(key)
+          .child('users')
+          .child(user.uid)
+          .set(createUser)
+          .then(() => {
+            console.log('add user in room');
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+
+        usersRef
+          .child(user.uid)
+          .child('rooms')
+          .child(key)
+          .set(newRoom)
+          .then(() => {
+            console.log('room add in user');
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+        closeModal();
+        setCurrentRoom(newRoom);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   handleSubmit = () => {
@@ -70,6 +128,7 @@ class CreateRoomModal extends Component {
 CreateRoomModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
+  currentUser: PropTypes.object,
 };
 
-export default CreateRoomModal;
+export default connect(null, { setCurrentRoom })(CreateRoomModal);

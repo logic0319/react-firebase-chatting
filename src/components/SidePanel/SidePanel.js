@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './SidePanel.module.scss';
 import Icon from '@material-ui/core/Icon';
 import CreateRoomModal from './CreateRoomModal/CreateRoomModal';
+import PropTypes from 'prop-types';
 
 class SidePanel extends Component {
   state = {
@@ -18,12 +19,14 @@ class SidePanel extends Component {
 
   render() {
     const { CreateRoomModalIsOpen } = this.state;
+    const { currentUser } = this.props;
     return (
       <div className={styles['side-panel']}>
         <button onClick={this.openModal} type="button">
           <Icon className={styles.icon}>add_box</Icon>
         </button>
         <CreateRoomModal
+          currentUser={currentUser}
           isOpen={CreateRoomModalIsOpen}
           closeModal={this.closeModal}
         />
@@ -31,5 +34,9 @@ class SidePanel extends Component {
     );
   }
 }
+
+SidePanel.propTypes = {
+  currentUser: PropTypes.object,
+};
 
 export default SidePanel;
