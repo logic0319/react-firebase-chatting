@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SidePanel from './SidePanel/SidePanel';
 import RoomList from './RoomList/RoomList';
+import Messages from './Messages/Messages';
 import styles from './App.module.scss';
 import '../styles/main.scss';
 
@@ -9,7 +10,7 @@ import PropTypes from 'prop-types';
 
 export class App extends Component {
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, currentRoom } = this.props;
     return (
       <div className={styles.App}>
         <SidePanel
@@ -18,6 +19,9 @@ export class App extends Component {
         <RoomList
           currentUser={currentUser}
         />
+        <Messages
+          currentRoom={currentRoom}
+        />
       </div>
     );
   }
@@ -25,10 +29,12 @@ export class App extends Component {
 
 const mapStateToProps = state => ({
   currentUser: state.user.currentUser,
+  currentRoom: state.room.currentRoom,
 });
 
 App.propTypes = {
   currentUser: PropTypes.object,
+  currentRoom: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(App);

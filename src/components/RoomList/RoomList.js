@@ -3,18 +3,21 @@ import styles from './RoomList.module.scss';
 import firebase from '../../firebase';
 import PropTypes from 'prop-types';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { connect } from 'react-redux';
+import { setCurrentRoom } from '../../actions';
 
 class RoomList extends Component {
   state = {
     user: this.props.currentUser,
     usersRef: firebase.database().ref('users'),
+    room: null,
     rooms: [],
     loading: true,
+    firstLoad: true,
   };
 
   componentDidMount() {
     const { user } = this.state;
-
     if (user) {
       this.addListeners(user.uid);
     }
@@ -23,6 +26,15 @@ class RoomList extends Component {
   componentWillUnmount() {
     this.removeListeners();
   }
+
+  setFirstRoom = () => {
+    const firstRoom = this.state.rooms[0];
+    if (this.state.firstLoad && this.state.rooms.length > 0) {
+      this.props.setCurrentRoom(firstRoom);
+      this.setState({ room: firstRoom });
+    }
+    this.setState({ firstLoad: false });
+  };
 
   addListeners = (userId) => {
     this.addUserListener(userId);
@@ -33,9 +45,7 @@ class RoomList extends Component {
     const loadedRooms = [];
     usersRef.child(userId).child('rooms').on('child_added', (snap) => {
       loadedRooms.push(snap.val());
-      this.setState({
-        rooms: loadedRooms, loading: false,
-      });
+      this.setState({ rooms: loadedRooms, loading: false }, () => this.setFirstRoom());
     });
   };
 
@@ -70,6 +80,7 @@ class RoomList extends Component {
 
 RoomList.propTypes = {
   currentUser: PropTypes.object,
+  setCurrentRoom: PropTypes.func.isRequired,
 };
 
-export default RoomList;
+export default connect(null, { setCurrentRoom })(RoomList);
