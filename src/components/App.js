@@ -20,6 +20,7 @@ export class App extends Component {
           currentUser={currentUser}
         />
         <Messages
+          currentUser={currentUser}
           currentRoom={currentRoom}
         />
       </div>

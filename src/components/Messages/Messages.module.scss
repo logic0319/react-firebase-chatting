@@ -1,0 +1,14 @@
+@import "../../styles/variable";
+
+.message-content {
+  height: 100%;
+  margin: 2rem 0;
+}
+.messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  width: 100%;
+  background-color: $color-grey-light-2;
+}
