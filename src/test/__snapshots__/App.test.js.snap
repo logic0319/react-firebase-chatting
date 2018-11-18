@@ -4,6 +4,6 @@ exports[`Register renders correctly 1`] = `
 <div
   className="App"
 >
-  App
+  <SidePanel />
 </div>
 `;

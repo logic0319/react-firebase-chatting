@@ -1,0 +1,20 @@
+@import "../../styles/variable";
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  width: 70px;
+  height: 100vh;
+  background-color: $color-primary-dark;
+}
+
+.icon {
+  color: $color-grey-light-2;
+  font-size: 48px !important;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+}
