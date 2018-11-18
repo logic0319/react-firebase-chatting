@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import firebase from '../../firebase';
+import uuidv4 from 'uuid/v4';
 import styles from './MessageForm.module.scss';
 import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import FileUploadModal from './FileUploadModal';
+import ProgressBar from './ProgressBar';
 
 class MessageForm extends Component {
   state = {
+    storageRef: firebase.storage().ref(),
+    uploadTask: null,
+    uploadState: '',
+    percentUploaded: 0,
     message: '',
     user: this.props.currentUser,
+    room: this.props.currentRoom,
     messagesRef: firebase.database().ref('messages'),
     errors: [],
     loading: false,
@@ -27,7 +34,7 @@ class MessageForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  createMessage = () => {
+  createMessage = (fileUrl = null) => {
     const message = {
       timestamp: firebase.database.ServerValue.TIMESTAMP,
       user: {
@@ -36,7 +43,11 @@ class MessageForm extends Component {
         avatar: this.state.user.photoURL,
       },
     };
-    message.content = this.state.message;
+    if (fileUrl !== null) {
+      message.image = fileUrl;
+    } else {
+      message.content = this.state.message;
+    }
     return message;
   };
 
@@ -69,31 +80,96 @@ class MessageForm extends Component {
     }
   };
 
+  uploadFile = (file, metadata) => {
+    const pathToUpload = this.state.room.id;
+    const ref = this.state.messagesRef;
+    const filePath = `images/${uuidv4()}.jpg`;
+
+    this.setState(state => ({
+      uploadState: 'uploading',
+      uploadTask: state.storageRef.child(filePath).put(file, metadata),
+    }),
+    () => {
+      this.state.uploadTask.on(
+        'state_changed',
+        (snap) => {
+          const percentUploaded = Math.round(
+            (snap.bytesTransferred / snap.totalBytes) * 100,
+          );
+          this.setState({ percentUploaded });
+        },
+        (err) => {
+          console.error(err);
+          this.setState(state => ({
+            errors: state.errors.concat(err),
+            uploadState: 'error',
+            uploadTask: null,
+          }));
+        },
+        () => {
+          this.state.uploadTask.snapshot.ref
+            .getDownloadURL()
+            .then((downloadUrl) => {
+              this.sendFileMessage(downloadUrl, ref, pathToUpload);
+            })
+            .catch((err) => {
+              console.error(err);
+              this.setState(state => ({
+                errors: state.errors.concat(err),
+                uploadState: 'error',
+                uploadTask: null,
+              }));
+            });
+        },
+      );
+    });
+  };
+
+  sendFileMessage = (fileUrl, ref, pathToUpload) => {
+    ref.child(pathToUpload)
+      .push()
+      .set(this.createMessage(fileUrl))
+      .then(() => {
+        this.setState({ uploadState: 'done', percentUploaded: 0 });
+      })
+      .catch((err) => {
+        console.error(err);
+        this.setState(state => ({
+          errors: state.errors.concat(err),
+        }));
+      });
+  };
+
   render() {
-    const { fileUploadModalIsOpen } = this.state;
+    const { fileUploadModalIsOpen, percentUploaded } = this.state;
     return (
       <div className={styles['message-form']}>
-        <button type="button" className={styles['upload-button']}>
-          <Icon
-            className={styles['upload-icon']}
-            onClick={this.openModal}
-          >
+        <div className={styles['message-form-content']}>
+          <button type="button" className={styles['upload-button']}>
+            <Icon
+              className={styles['upload-icon']}
+              onClick={this.openModal}
+            >
           add_to_photos
-          </Icon>
-        </button>
-        <input
-          onKeyPress={this.sendMessage}
-          onChange={this.handleChange}
-          className={styles['message-input']}
-          id="message"
-          value={this.state.message}
-          name="message"
-          type="text"
-          autoComplete="off"
-        />
+            </Icon>
+          </button>
+          <input
+            onKeyPress={this.sendMessage}
+            onChange={this.handleChange}
+            className={styles['message-input']}
+            id="message"
+            value={this.state.message}
+            name="message"
+            type="text"
+            autoComplete="off"
+          />
+        </div>
+        <ProgressBar completed={percentUploaded} />
+
         <FileUploadModal
           isOpen={fileUploadModalIsOpen}
           closeModal={this.closeModal}
+          uploadFile={this.uploadFile}
         />
       </div>
     );

@@ -60,6 +60,7 @@ class FileUploadModal extends Component {
         isOpen={isOpen}
         onRequestClose={closeModal}
         style={customStyles}
+        ariaHideApp={false}
       >
         <h1>이미지 파일을 선택하세요</h1>
         <Input

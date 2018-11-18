@@ -4,7 +4,12 @@
   display: flex;
   margin-top: 1rem;
 }
-
+.image-wrapper {
+  width: 50%;
+}
+.message-img {
+  width: 100%;
+}
 .message-content {
   border-left: 1.5px solid $color-tertiary-dark;
   padding-left: .5rem;

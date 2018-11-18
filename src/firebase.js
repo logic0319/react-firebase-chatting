@@ -9,7 +9,7 @@ const config = {
   authDomain: 'react-fireabse-chatting.firebaseapp.com',
   databaseURL: 'https://react-fireabse-chatting.firebaseio.com',
   projectId: 'react-fireabse-chatting',
-  storageBucket: '',
+  storageBucket: 'react-fireabse-chatting.appspot.com',
   messagingSenderId: '8672500514',
 };
 firebase.initializeApp(config);
