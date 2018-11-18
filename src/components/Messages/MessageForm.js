@@ -3,6 +3,7 @@ import firebase from '../../firebase';
 import styles from './MessageForm.module.scss';
 import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
+import FileUploadModal from './FileUploadModal';
 
 class MessageForm extends Component {
   state = {
@@ -11,6 +12,15 @@ class MessageForm extends Component {
     messagesRef: firebase.database().ref('messages'),
     errors: [],
     loading: false,
+    fileUploadModalIsOpen: false,
+  };
+
+  openModal = () => {
+    this.setState({ fileUploadModalIsOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ fileUploadModalIsOpen: false });
   };
 
   handleChange = (event) => {
@@ -60,10 +70,16 @@ class MessageForm extends Component {
   };
 
   render() {
+    const { fileUploadModalIsOpen } = this.state;
     return (
       <div className={styles['message-form']}>
         <button type="button" className={styles['upload-button']}>
-          <Icon className={styles['upload-icon']}>add_to_photos</Icon>
+          <Icon
+            className={styles['upload-icon']}
+            onClick={this.openModal}
+          >
+          add_to_photos
+          </Icon>
         </button>
         <input
           onKeyPress={this.sendMessage}
@@ -74,6 +90,10 @@ class MessageForm extends Component {
           name="message"
           type="text"
           autoComplete="off"
+        />
+        <FileUploadModal
+          isOpen={fileUploadModalIsOpen}
+          closeModal={this.closeModal}
         />
       </div>
     );
