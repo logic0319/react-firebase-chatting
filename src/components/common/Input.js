@@ -22,6 +22,7 @@ class Input extends Component {
           placeholder={placeholder}
           onChange={this.handleChange}
           className={`${styles.input} ${className}`}
+          autoComplete="off"
         />
         <label
           htmlFor={id}
