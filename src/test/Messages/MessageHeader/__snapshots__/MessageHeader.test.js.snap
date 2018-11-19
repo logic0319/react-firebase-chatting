@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageHeader 초기 렌더링 스냅샷 일치함 1`] = `
+<Fragment>
+  <Paper
+    className="message-header"
+  >
+    <div
+      className="room-info"
+    >
+      <h3
+        className="room-name"
+      >
+        # Welcome to Open Chat
+      </h3>
+      <button
+        className="user-count"
+        disabled={true}
+        onClick={[Function]}
+        type="button"
+      >
+        참여자 수 : 0
+      </button>
+    </div>
+    <button
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      <WithStyles(Tooltip)
+        title="초대하기"
+      >
+        <WithStyles(Icon)
+          className="icon"
+        >
+          person_add
+        </WithStyles(Icon)>
+      </WithStyles(Tooltip)>
+    </button>
+  </Paper>
+  <Connect(UserInviteModal)
+    closeModal={[Function]}
+    currentRoomUsers={Array []}
+    isOpen={false}
+  />
+  <CurrentRoomUsersModal
+    closeModal={[Function]}
+    currentRoomUsers={Array []}
+    isOpen={false}
+  />
+</Fragment>
+`;
