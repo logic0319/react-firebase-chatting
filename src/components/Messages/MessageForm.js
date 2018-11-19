@@ -6,6 +6,7 @@ import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import FileUploadModal from './FileUploadModal';
 import ProgressBar from './ProgressBar';
+import Tooltip from '@material-ui/core/Tooltip';
 
 class MessageForm extends Component {
   state = {
@@ -147,9 +148,11 @@ class MessageForm extends Component {
             className={styles['upload-button']}
             onClick={this.openModal}
           >
-            <Icon className={styles['upload-icon']}>
+            <Tooltip title="사진 업로드">
+              <Icon className={styles['upload-icon']}>
               add_to_photos
-            </Icon>
+              </Icon>
+            </Tooltip>
           </button>
           <input
             disabled={!room}

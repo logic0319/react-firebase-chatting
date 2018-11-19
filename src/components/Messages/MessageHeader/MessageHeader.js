@@ -5,6 +5,7 @@ import Icon from '@material-ui/core/Icon';
 import styles from './MessageHeader.module.scss';
 import UserInviteModal from './UserInviteModal';
 import CurrentRoomUsersModal from './CurrentRoomUsersModal';
+import Tooltip from '@material-ui/core/Tooltip';
 import firebase from '../../../firebase';
 
 class MessageHeader extends Component {
@@ -77,7 +78,9 @@ class MessageHeader extends Component {
             </button>
           </div>
           <button type="button" onClick={this.openModal} disabled={!currentRoom}>
-            <Icon className={styles.icon}>person_add</Icon>
+            <Tooltip title="초대하기">
+              <Icon className={styles.icon}>person_add</Icon>
+            </Tooltip>
           </button>
         </Paper>
         <UserInviteModal

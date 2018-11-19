@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './SidePanel.module.scss';
 import Icon from '@material-ui/core/Icon';
+import Tooltip from '@material-ui/core/Tooltip';
 import CreateRoomModal from './CreateRoomModal/CreateRoomModal';
 import firebase from '../../firebase';
 import PropTypes from 'prop-types';
@@ -31,10 +32,14 @@ class SidePanel extends Component {
     return (
       <div className={styles['side-panel']}>
         <button onClick={this.openModal} type="button">
-          <Icon className={styles.icon}>add_box</Icon>
+          <Tooltip title="방 만들기">
+            <Icon className={styles.icon}>add_box</Icon>
+          </Tooltip>
         </button>
         <button onClick={this.handleLogout} type="button">
-          <Icon className={styles.icon}>directions_run</Icon>
+          <Tooltip title="로그아웃">
+            <Icon className={styles.icon}>directions_run</Icon>
+          </Tooltip>
         </button>
         <CreateRoomModal
           currentUser={currentUser}
