@@ -21,6 +21,9 @@ class MessageHeader extends Component {
     this.addListeners();
   }
 
+  /**
+   * 컴포넌트가 unmount될 때 이벤트 리스너를 제거합니다.
+   */
   componentWillUnmount() {
     this.removeListeners();
   }
@@ -45,6 +48,10 @@ class MessageHeader extends Component {
     this.setState({ UserListModalIsOpen: false });
   };
 
+  /**
+   * 이벤트 리스너를 등록합니다.
+   * DB에서 roodId의 유저가 추가 될 때마다 실행 됩니다.
+   */
   addRoomListener = () => {
     const { roomsRef, currentRoom } = this.state;
     const currentRoomUsers = [];

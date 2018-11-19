@@ -24,6 +24,9 @@ export class RoomList extends Component {
     }
   }
 
+  /**
+   * 컴포넌트가 unmount될 때 이벤트 리스너를 제거합니다.
+   */
   componentWillUnmount() {
     this.removeListeners();
   }
@@ -52,6 +55,11 @@ export class RoomList extends Component {
     this.addUserListener(userId);
   };
 
+  /**
+   * 이벤트 리스너를 등록합니다.
+   * DB에서 userId의 방 객체가 추가 될때마다 실행 됩니다.
+   * @param userId
+   */
   addUserListener = (userId) => {
     const { usersRef } = this.state;
     const loadedRooms = [];

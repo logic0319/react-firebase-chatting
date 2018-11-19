@@ -36,6 +36,11 @@ class Messages extends Component {
     this.addMessageListener(roomId);
   };
 
+  /**
+   * 이벤트 리스너를 등록합니다.
+   * DB에서 roodId의 메세지 객체가 추가 될때마다 실행 됩니다.
+   * @param roomId
+   */
   addMessageListener = (roomId) => {
     const loadedMessages = [];
     const ref = this.state.messagesRef;

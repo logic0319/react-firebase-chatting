@@ -20,6 +20,12 @@ class CreateRoomModal extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  /**
+   * 방 생성은 다음과 같은 과정으로 수행됩니다.
+   * 1. 방 데이터를 저장합니다.
+   * 2. 생성된 방 정보에 방을 만든 유저 정보를 추가합니다.
+   * 3. 방을 만든 유저 정보에 생성된 방 정보를 추가합니다.
+   */
   createRoom = () => {
     const {
       roomsRef, usersRef, roomName, user,
@@ -129,6 +135,7 @@ CreateRoomModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   currentUser: PropTypes.object,
+  setCurrentRoom: PropTypes.func.isRequired,
 };
 
 export default connect(null, { setCurrentRoom })(CreateRoomModal);
