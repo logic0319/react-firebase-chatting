@@ -37,6 +37,7 @@ class UserInviteModal extends Component {
 
   removeListeners = () => {
     this.state.usersRef.off();
+    this.state.roomsRef.off();
   };
 
   inviteUser = (user) => {
@@ -83,15 +84,17 @@ class UserInviteModal extends Component {
     closeModal();
   };
 
-  displayUsers = users => (
-    users.length > 0 && users.map(user => (
-      <UserInfoItem
-        user={user}
-        onClick={() => this.inviteUser(user)}
-        key={user.id}
-      />
-    ))
-  );
+  displayUsers = (users) => {
+    const currentRoomUserIds = this.props.currentRoomUsers.map(user => user.id);
+    return users.length > 0 && users
+      .filter(user => !currentRoomUserIds.includes(user.id)).map(user => (
+        <UserInfoItem
+          user={user}
+          onClick={() => this.inviteUser(user)}
+          key={user.id}
+        />
+      ));
+  };
 
   render() {
     const customStyles = {
@@ -131,6 +134,7 @@ UserInviteModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   currentRoom: PropTypes.object,
+  currentRoomUsers: PropTypes.array,
 };
 
 export default connect(null, { setCurrentRoom })(UserInviteModal);
