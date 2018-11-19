@@ -9,9 +9,9 @@ class Message extends Component {
     const { message, user } = this.props;
     return (
       <div className={styles.message}>
-        <img className={styles.avatar} src={user.photoURL} alt={`${user.displayName} avatar`} />
+        <img className={styles.avatar} src={user.avatar} alt={`${user.name} avatar`} />
         <div className={styles['message-content']}>
-          <span className={styles['display-name']}>{user.displayName}</span>
+          <span className={styles['display-name']}>{user.name}</span>
           {this.isImage(message)
             ? (
               <div className={styles['image-wrapper']}>

@@ -98,6 +98,8 @@ class Register extends Component {
     return usersRef.child(createdUser.user.uid).set({
       name: createdUser.user.displayName,
       avatar: createdUser.user.photoURL,
+      email: createdUser.user.email,
+      id: createdUser.user.uid,
     });
   };
 

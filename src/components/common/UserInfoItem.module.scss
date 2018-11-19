@@ -1,0 +1,34 @@
+@import "../../styles/variable";
+
+@import "../../styles/variable";
+
+.user-info-item {
+  display: flex;
+  margin: 1rem;
+  &:hover {
+    cursor: pointer;
+    opacity: .5;
+  }
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  margin-right: .5rem;
+}
+
+.display-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.email {
+  font-size: 14px;
+}
+
+.user-info-content {
+  display: flex;
+  flex-direction: column;
+  border-left: 1.5px solid $color-tertiary-dark;
+  padding-left: .5rem;
+}

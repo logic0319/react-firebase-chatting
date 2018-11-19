@@ -5,12 +5,12 @@ import 'firebase/storage';
 
 // firebase 설정
 const config = {
-  apiKey: 'AIzaSyCHIqTNZgs16joWoQL0cFuxylsszUeJY0g',
-  authDomain: 'react-fireabse-chatting.firebaseapp.com',
-  databaseURL: 'https://react-fireabse-chatting.firebaseio.com',
-  projectId: 'react-fireabse-chatting',
-  storageBucket: 'react-fireabse-chatting.appspot.com',
-  messagingSenderId: '8672500514',
+  apiKey: 'AIzaSyAHP6AbYkY0y3wJdgXXniWpyPOcwF_SE1g',
+  authDomain: 'react-chatting.firebaseapp.com',
+  databaseURL: 'https://react-chatting.firebaseio.com',
+  projectId: 'react-chatting',
+  storageBucket: 'react-chatting.appspot.com',
+  messagingSenderId: '508160967758',
 };
 firebase.initializeApp(config);
 

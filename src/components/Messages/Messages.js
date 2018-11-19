@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MessageHeader from './MessageHeader';
+import MessageHeader from './MessageHeader/MessageHeader';
 import MessageForm from './MessageForm';
 import Paper from '../common/Paper';
 import Message from './Message';
@@ -52,7 +52,7 @@ class Messages extends Component {
     <Message
       key={message.timestamp}
       message={message}
-      user={this.state.user}
+      user={message.user}
     />
   ))
 
@@ -62,7 +62,7 @@ class Messages extends Component {
     return (
       <section className={styles.messages}>
         <MessageHeader
-          roomName={currentRoom ? currentRoom.name : ''}
+          currentRoom={currentRoom}
         />
         <Paper className={styles['custom-paper']}>
           <div className={styles['message-content']}>
