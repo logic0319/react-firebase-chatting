@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrentRoomUsersModal 초기 렌더링 스냅샷 일치함 1`] = `
+<Modal
+  ariaHideApp={false}
+  bodyOpenClassName="ReactModal__Body--open"
+  closeTimeoutMS={0}
+  isOpen={false}
+  onRequestClose={[MockFunction]}
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  role="dialog"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+  style={
+    Object {
+      "content": Object {
+        "background": "#eee",
+        "border": "none",
+        "bottom": "auto",
+        "boxShadow": "0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)",
+        "left": "50%",
+        "marginRight": "-50%",
+        "padding": "3rem",
+        "right": "auto",
+        "top": "50%",
+        "transform": "translate(-50%, -50%)",
+        "width": "35rem",
+      },
+    }
+  }
+>
+  <h1>
+    현재 참여자
+  </h1>
+  <UserInfoItem
+    onClick={[Function]}
+    user={
+      Object {
+        "avatar": "http://wwww.mock-image-url1.com",
+        "email": "myp1@daum.net",
+        "name": "myp1",
+      }
+    }
+  />
+  <UserInfoItem
+    onClick={[Function]}
+    user={
+      Object {
+        "avatar": "http://wwww.mock-image-url2.com",
+        "email": "myp2@daum.net",
+        "name": "myp2",
+      }
+    }
+  />
+</Modal>
+`;

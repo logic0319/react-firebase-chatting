@@ -48,7 +48,7 @@ class CurrentRoomUsersModal extends Component {
 CurrentRoomUsersModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
-  currentRoomUsers: PropTypes.array,
+  currentRoomUsers: PropTypes.array.isRequired,
 };
 
 export default CurrentRoomUsersModal;
