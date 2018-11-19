@@ -67,11 +67,18 @@ class MessageHeader extends Component {
         <Paper className={styles['message-header']}>
           <div className={styles['room-info']}>
             <h3 className={styles['room-name']}>{`# ${currentRoom ? currentRoom.name : 'Welcome to Open Chat'}`}</h3>
-            <button className={styles['user-count']} onClick={this.openCurrentRoomUsersModal}>
+            <button
+              type="button"
+              className={styles['user-count']}
+              onClick={this.openCurrentRoomUsersModal}
+              disabled={!currentRoom}
+            >
               {`참여자 수 : ${currentRoomUsers.length}`}
             </button>
           </div>
-          <Icon className={styles.icon} onClick={this.openModal}>person_add</Icon>
+          <button type="button" onClick={this.openModal} disabled={!currentRoom}>
+            <Icon className={styles.icon}>person_add</Icon>
+          </button>
         </Paper>
         <UserInviteModal
           isOpen={UserListModalIsOpen}

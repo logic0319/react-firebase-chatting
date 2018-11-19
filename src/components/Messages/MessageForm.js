@@ -11,7 +11,6 @@ class MessageForm extends Component {
   state = {
     storageRef: firebase.storage().ref(),
     uploadTask: null,
-    uploadState: '',
     percentUploaded: 0,
     message: '',
     user: this.props.currentUser,
@@ -86,7 +85,6 @@ class MessageForm extends Component {
     const filePath = `images/${uuidv4()}.jpg`;
 
     this.setState(state => ({
-      uploadState: 'uploading',
       uploadTask: state.storageRef.child(filePath).put(file, metadata),
     }),
     () => {
@@ -102,7 +100,6 @@ class MessageForm extends Component {
           console.error(err);
           this.setState(state => ({
             errors: state.errors.concat(err),
-            uploadState: 'error',
             uploadTask: null,
           }));
         },
@@ -116,7 +113,6 @@ class MessageForm extends Component {
               console.error(err);
               this.setState(state => ({
                 errors: state.errors.concat(err),
-                uploadState: 'error',
                 uploadTask: null,
               }));
             });
@@ -130,7 +126,7 @@ class MessageForm extends Component {
       .push()
       .set(this.createMessage(fileUrl))
       .then(() => {
-        this.setState({ uploadState: 'done', percentUploaded: 0 });
+        this.setState({ percentUploaded: 0 });
       })
       .catch((err) => {
         console.error(err);
@@ -141,19 +137,23 @@ class MessageForm extends Component {
   };
 
   render() {
-    const { fileUploadModalIsOpen, percentUploaded } = this.state;
+    const { fileUploadModalIsOpen, percentUploaded, room } = this.state;
     return (
       <div className={styles['message-form']}>
         <div className={styles['message-form-content']}>
-          <button type="button" className={styles['upload-button']}>
-            <Icon
-              className={styles['upload-icon']}
-              onClick={this.openModal}
-            >
-          add_to_photos
+          <button
+            disabled={!room}
+            type="button"
+            className={styles['upload-button']}
+            onClick={this.openModal}
+          >
+            <Icon className={styles['upload-icon']}>
+              add_to_photos
             </Icon>
           </button>
           <input
+            disabled={!room}
+            placeholder={room ? '' : '방을 생성해주세요'}
             onKeyPress={this.sendMessage}
             onChange={this.handleChange}
             className={styles['message-input']}
@@ -165,7 +165,6 @@ class MessageForm extends Component {
           />
         </div>
         <ProgressBar completed={percentUploaded} />
-
         <FileUploadModal
           isOpen={fileUploadModalIsOpen}
           closeModal={this.closeModal}
