@@ -87,6 +87,12 @@ class Register extends Component {
               const error = { message: '이미 가입된 이메일 입니다.' };
               this.setState({ errors: errors.concat(error), loading: false });
             }
+            if (err.code === 'auth/invalid-email') {
+              const error = { message: '이메일을 확인해 주세요' };
+              this.setState({
+                errors: errors.concat(error), loading: false,
+              });
+            }
             console.error(err);
           });
       }
