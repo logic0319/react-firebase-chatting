@@ -32,6 +32,11 @@ class MessageForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  /**
+   * message 객체를 반환합니다. message 객체는 file의 유무에 따라 사진 혹은 텍스트를 가지고 있습니다.
+   * @return message obj
+   * @param fileUrl
+   */
   createMessage = (fileUrl = null) => {
     const message = {
       timestamp: firebase.database.ServerValue.TIMESTAMP,
@@ -49,6 +54,18 @@ class MessageForm extends Component {
     return message;
   };
 
+  /**
+   * message 객체를 현재 방 id의 밑으로 저장합니다.
+   * messages: {
+   *  roomId : {
+   *    messageId : {
+   *      content: string,
+   *      id: string,
+   *      users: array
+   *    }
+   *  }
+   * }
+   */
   sendMessage = (event) => {
     if (event.key === 'Enter') {
       const { currentRoom, scrollDown } = this.props;
@@ -70,6 +87,9 @@ class MessageForm extends Component {
     }
   };
 
+  /**
+   * 구글 storage에 image를 업로드합니다.
+   */
   uploadFile = (file, metadata) => {
     const pathToUpload = this.state.room.id;
     const ref = this.state.messagesRef;
