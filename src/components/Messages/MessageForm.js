@@ -17,8 +17,6 @@ class MessageForm extends Component {
     user: this.props.currentUser,
     room: this.props.currentRoom,
     messagesRef: firebase.database().ref('messages'),
-    errors: [],
-    loading: false,
     fileUploadModalIsOpen: false,
   };
 
@@ -57,25 +55,16 @@ class MessageForm extends Component {
       const { message, messagesRef } = this.state;
 
       if (message) {
-        this.setState({ loading: true });
         messagesRef
           .child(currentRoom.id)
           .push()
           .set(this.createMessage())
           .then(() => {
-            this.setState({ loading: false, message: '', errors: [] });
+            this.setState({ message: '' });
           })
           .catch((err) => {
             console.error(err);
-            this.setState(state => ({
-              loading: false,
-              errors: state.errors.concat(err),
-            }));
           });
-      } else {
-        this.setState(state => ({
-          errors: state.errors.concat({ message: 'Add a message' }),
-        }));
       }
     }
   };
@@ -99,10 +88,7 @@ class MessageForm extends Component {
         },
         (err) => {
           console.error(err);
-          this.setState(state => ({
-            errors: state.errors.concat(err),
-            uploadTask: null,
-          }));
+          this.setState({ uploadTask: null });
         },
         () => {
           this.state.uploadTask.snapshot.ref
@@ -112,10 +98,9 @@ class MessageForm extends Component {
             })
             .catch((err) => {
               console.error(err);
-              this.setState(state => ({
-                errors: state.errors.concat(err),
+              this.setState({
                 uploadTask: null,
-              }));
+              });
             });
         },
       );
@@ -131,9 +116,6 @@ class MessageForm extends Component {
       })
       .catch((err) => {
         console.error(err);
-        this.setState(state => ({
-          errors: state.errors.concat(err),
-        }));
       });
   };
 
@@ -156,7 +138,7 @@ class MessageForm extends Component {
           </button>
           <input
             disabled={!room}
-            placeholder={room ? '' : '방을 생성해주세요'}
+            placeholder={room ? '메세지를 적어주세요' : '방을 생성해주세요'}
             onKeyPress={this.sendMessage}
             onChange={this.handleChange}
             className={styles['message-input']}
