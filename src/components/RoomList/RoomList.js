@@ -6,7 +6,7 @@ import HashLoader from 'react-spinners/HashLoader';
 import { connect } from 'react-redux';
 import { setCurrentRoom } from '../../actions';
 
-class RoomList extends Component {
+export class RoomList extends Component {
   state = {
     activeRoom: '',
     room: null,

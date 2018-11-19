@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SidePanel 초기 렌더링 스냅샷 일치함 1`] = `
+exports[`RoomList 초기 렌더링 스냅샷 일치함 1`] = `
 <section
   className="room-list"
 >
@@ -16,7 +16,7 @@ exports[`SidePanel 초기 렌더링 스냅샷 일치함 1`] = `
       className=""
       color="#ffffff"
       loading={true}
-      size={35}
+      size={50}
       sizeUnit="px"
     />
   </div>

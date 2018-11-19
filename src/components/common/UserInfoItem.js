@@ -6,13 +6,13 @@ class UserInfoItem extends Component {
   render() {
     const { user, onClick } = this.props;
     return (
-      <div className={styles['user-info-item']} onClick={onClick}>
+      <button className={styles['user-info-item']} onClick={onClick} type="button">
         <img className={styles.avatar} src={user.avatar} alt={`${user.name} avatar`} />
         <div className={styles['user-info-content']}>
           <span className={styles['display-name']}>{user.name}</span>
           <span className={styles.email}>{user.email}</span>
         </div>
-      </div>
+      </button>
     );
   }
 }

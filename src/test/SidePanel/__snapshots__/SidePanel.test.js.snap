@@ -8,11 +8,29 @@ exports[`SidePanel 초기 렌더링 스냅샷 일치함 1`] = `
     onClick={[Function]}
     type="button"
   >
-    <WithStyles(Icon)
-      className="icon"
+    <WithStyles(Tooltip)
+      title="방 만들기"
     >
-      add_box
-    </WithStyles(Icon)>
+      <WithStyles(Icon)
+        className="icon"
+      >
+        add_box
+      </WithStyles(Icon)>
+    </WithStyles(Tooltip)>
+  </button>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    <WithStyles(Tooltip)
+      title="로그아웃"
+    >
+      <WithStyles(Icon)
+        className="icon"
+      >
+        directions_run
+      </WithStyles(Icon)>
+    </WithStyles(Tooltip)>
   </button>
   <Connect(CreateRoomModal)
     closeModal={[Function]}

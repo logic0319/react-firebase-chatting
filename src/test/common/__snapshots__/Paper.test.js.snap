@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paper 초기 렌더링 스냅샷 일치함 1`] = `
+<div
+  className="paper undefined"
+>
+  <p>
+    paper
+  </p>
+</div>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserInfoItem 초기 렌더링 스냅샷 일치함 1`] = `
+<button
+  className="user-info-item"
+  onClick={[MockFunction]}
+  type="button"
+>
+  <img
+    alt="myp avatar"
+    className="avatar"
+    src="http://wwww.mock-image-url.com"
+  />
+  <div
+    className="user-info-content"
+  >
+    <span
+      className="display-name"
+    >
+      myp
+    </span>
+    <span
+      className="email"
+    >
+      myp7@daum.net
+    </span>
+  </div>
+</button>
+`;

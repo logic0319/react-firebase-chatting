@@ -3,6 +3,7 @@
 exports[`Input 초기 렌더링 스냅샷 일치함 1`] = `
 <Fragment>
   <input
+    autoComplete="off"
     className="input undefined"
     id="email"
     name="email"

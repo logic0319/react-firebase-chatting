@@ -1,11 +1,13 @@
 import React from 'react';
-import RoomList from '../components/RoomList/RoomList';
+import { RoomList } from '../components/RoomList/RoomList';
 import {shallow} from 'enzyme/build';
 
-describe('SidePanel', () => {
+const mockSetCurrentRoom = jest.fn();
+
+describe('RoomList', () => {
   let component = null;
   it('초기 렌더링이 문제없이 되야함', () => {
-    component = shallow(<RoomList/>);
+    component = shallow(<RoomList setCurrentRoom={mockSetCurrentRoom} />);
   });
 
   it('초기 렌더링 스냅샷 일치함', () => {

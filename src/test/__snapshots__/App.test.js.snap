@@ -4,7 +4,8 @@ exports[`Register renders correctly 1`] = `
 <div
   className="App"
 >
-  <SidePanel />
-  <RoomList />
+  <Connect(SidePanel) />
+  <Connect(RoomList) />
+  <Messages />
 </div>
 `;

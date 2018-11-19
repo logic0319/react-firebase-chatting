@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { clearUser, clearRoom } from '../../actions';
 import { connect } from 'react-redux';
 
-class SidePanel extends Component {
+export class SidePanel extends Component {
   state = {
     CreateRoomModalIsOpen: false,
   };
