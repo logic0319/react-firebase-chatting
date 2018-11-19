@@ -9,13 +9,17 @@ import PropTypes from 'prop-types';
 
 
 class Messages extends Component {
+  constructor(props) {
+    super(props);
+    this.messageContentRef = React.createRef();
+  }
+
   state = {
     messages: [],
     messagesRef: firebase.database().ref('messages'),
-    messagesLoading: true,
     room: this.props.currentRoom,
     user: this.props.currentUser,
-  }
+  };
 
   componentDidMount() {
     const { room, user } = this.state;
@@ -39,7 +43,6 @@ class Messages extends Component {
       loadedMessages.push(snap.val());
       this.setState({
         messages: loadedMessages,
-        messagesLoading: false,
       });
     });
   };
@@ -54,7 +57,11 @@ class Messages extends Component {
       message={message}
       user={message.user}
     />
-  ))
+  ));
+
+  scrollDown = () => {
+    this.messageContentRef.current.scrollTop = this.messageContentRef.current.scrollHeight;
+  };
 
   render() {
     const { currentRoom, currentUser } = this.props;
@@ -65,11 +72,12 @@ class Messages extends Component {
           currentRoom={currentRoom}
         />
         <Paper className={styles['custom-paper']}>
-          <div className={styles['message-content']}>
+          <div className={styles['message-content']} ref={this.messageContentRef}>
             {this.displayMessages(messages)}
           </div>
         </Paper>
         <MessageForm
+          scrollDown={this.scrollDown}
           currentUser={currentUser}
           currentRoom={currentRoom}
         />

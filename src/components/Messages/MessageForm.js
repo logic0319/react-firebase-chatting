@@ -51,7 +51,7 @@ class MessageForm extends Component {
 
   sendMessage = (event) => {
     if (event.key === 'Enter') {
-      const { currentRoom } = this.props;
+      const { currentRoom, scrollDown } = this.props;
       const { message, messagesRef } = this.state;
 
       if (message) {
@@ -61,6 +61,7 @@ class MessageForm extends Component {
           .set(this.createMessage())
           .then(() => {
             this.setState({ message: '' });
+            scrollDown();
           })
           .catch((err) => {
             console.error(err);
@@ -161,6 +162,7 @@ class MessageForm extends Component {
 }
 
 MessageForm.propTypes = {
+  scrollDown: PropTypes.func.isRequired,
   currentUser: PropTypes.object,
   currentRoom: PropTypes.object,
 };
