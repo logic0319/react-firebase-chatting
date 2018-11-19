@@ -34,6 +34,10 @@ const roomReducer = (state = initialRoomState, action) => {
       ...state,
       currentRoom: action.payload.currentRoom,
     };
+  case actionTypes.CLEAR_ROOM:
+    return {
+      ...initialRoomState,
+    };
   default:
     return state;
   }

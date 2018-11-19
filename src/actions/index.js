@@ -20,3 +20,7 @@ export const setCurrentRoom = room => ({
     currentRoom: room,
   },
 });
+
+export const clearRoom = () => ({
+  type: actionsTypes.CLEAR_ROOM,
+});

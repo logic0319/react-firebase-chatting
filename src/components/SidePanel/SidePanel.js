@@ -5,6 +5,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import CreateRoomModal from './CreateRoomModal/CreateRoomModal';
 import firebase from '../../firebase';
 import PropTypes from 'prop-types';
+import { clearUser, clearRoom } from '../../actions';
+import { connect } from 'react-redux';
 
 class SidePanel extends Component {
   state = {
@@ -20,10 +22,13 @@ class SidePanel extends Component {
   };
 
   handleLogout = () => {
+    const { clearRoom, clearUser } = this.props;
     firebase
       .auth()
       .signOut()
       .then(() => console.log('Logout'));
+    clearRoom();
+    clearUser();
   };
 
   render() {
@@ -53,6 +58,8 @@ class SidePanel extends Component {
 
 SidePanel.propTypes = {
   currentUser: PropTypes.object,
+  clearRoom: PropTypes.func.isRequired,
+  clearUser: PropTypes.func.isRequired,
 };
 
-export default SidePanel;
+export default connect(null, { clearRoom, clearUser })(SidePanel);
