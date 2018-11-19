@@ -6,7 +6,7 @@ import { setCurrentRoom } from '../../../actions';
 import PropTypes from 'prop-types';
 import UserInfoItem from '../../common/UserInfoItem';
 
-class UserInviteModal extends Component {
+export class UserInviteModal extends Component {
   state = {
     currentRoom: this.props.currentRoom,
     users: [],
