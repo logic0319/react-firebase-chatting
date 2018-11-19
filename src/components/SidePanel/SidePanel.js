@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './SidePanel.module.scss';
 import Icon from '@material-ui/core/Icon';
 import CreateRoomModal from './CreateRoomModal/CreateRoomModal';
+import firebase from '../../firebase';
 import PropTypes from 'prop-types';
 
 class SidePanel extends Component {
@@ -17,6 +18,13 @@ class SidePanel extends Component {
     this.setState({ CreateRoomModalIsOpen: false });
   };
 
+  handleLogout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => console.log('Logout'));
+  };
+
   render() {
     const { CreateRoomModalIsOpen } = this.state;
     const { currentUser } = this.props;
@@ -24,6 +32,9 @@ class SidePanel extends Component {
       <div className={styles['side-panel']}>
         <button onClick={this.openModal} type="button">
           <Icon className={styles.icon}>add_box</Icon>
+        </button>
+        <button onClick={this.handleLogout} type="button">
+          <Icon className={styles.icon}>directions_run</Icon>
         </button>
         <CreateRoomModal
           currentUser={currentUser}
