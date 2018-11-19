@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import Icon from '@material-ui/core/Icon';
 import styles from './MessageHeader.module.scss';
 import UserInviteModal from './UserInviteModal';
+import CurrentRoomUsersModal from './CurrentRoomUsersModal';
 import firebase from '../../../firebase';
 
 class MessageHeader extends Component {
   state = {
     UserListModalIsOpen: false,
+    CurrentRoomUsersIsOpen: false,
     roomsRef: firebase.database().ref('rooms'),
     currentRoom: this.props.currentRoom,
     currentRoomUsers: [],
@@ -24,6 +26,14 @@ class MessageHeader extends Component {
 
   addListeners = () => {
     this.addRoomListener();
+  };
+
+  openCurrentRoomUsersModal = () => {
+    this.setState({ CurrentRoomUsersIsOpen: true });
+  };
+
+  closeCurrentRoomUsersModal = () => {
+    this.setState({ CurrentRoomUsersIsOpen: false });
   };
 
   openModal = () => {
@@ -51,17 +61,27 @@ class MessageHeader extends Component {
 
   render() {
     const { currentRoom } = this.props;
-    const { UserListModalIsOpen, currentRoomUsers } = this.state;
+    const { UserListModalIsOpen, currentRoomUsers, CurrentRoomUsersIsOpen } = this.state;
     return (
       <Fragment>
         <Paper className={styles['message-header']}>
-          <h3 className={styles['room-name']}>{`# ${currentRoom ? currentRoom.name : 'Welcome to Open Chat'}`}</h3>
+          <div className={styles['room-info']}>
+            <h3 className={styles['room-name']}>{`# ${currentRoom ? currentRoom.name : 'Welcome to Open Chat'}`}</h3>
+            <button className={styles['user-count']} onClick={this.openCurrentRoomUsersModal}>
+              {`참여자 수 : ${currentRoomUsers.length}`}
+            </button>
+          </div>
           <Icon className={styles.icon} onClick={this.openModal}>person_add</Icon>
         </Paper>
         <UserInviteModal
           isOpen={UserListModalIsOpen}
           closeModal={this.closeModal}
           currentRoom={currentRoom}
+          currentRoomUsers={currentRoomUsers}
+        />
+        <CurrentRoomUsersModal
+          isOpen={CurrentRoomUsersIsOpen}
+          closeModal={this.closeCurrentRoomUsersModal}
           currentRoomUsers={currentRoomUsers}
         />
       </Fragment>

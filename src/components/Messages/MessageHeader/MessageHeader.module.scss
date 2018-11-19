@@ -13,6 +13,23 @@
   font-weight: bold;
 }
 
+.room-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-count {
+  text-align: left;
+  font-size: 14px;
+  color: $color-tertiary-dark;
+  margin-top: .5rem;
+  font-weight: bold;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+}
+
 .icon {
   color: $color-primary-dark;
   font-size: 32px !important;
