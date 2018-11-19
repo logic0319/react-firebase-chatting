@@ -32,6 +32,11 @@ class FileUploadModal extends Component {
     }
   };
 
+  /**
+   * 파일의 mime type의 유효성을 검사합니다. mime.lookup(file)은 해당 파일의 mime type을 리턴합니다.
+   * @param filename
+   * @return boolean
+   */
   isAuthorized = filename => this.state.authorized.includes(mime.lookup(filename));
 
   clearFile = () => this.setState({ file: null });
