@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploadModal 초기 렌더링 스냅샷 일치함 1`] = `
+<div
+  className="message"
+>
+  <img
+    alt="myp1 avatar"
+    className="avatar"
+    src="http://wwww.mock-image-url1.com"
+  />
+  <div
+    className="message-content"
+  >
+    <span
+      className="display-name"
+    >
+      myp1
+    </span>
+    <div
+      className="image-wrapper"
+    >
+      <img
+        alt="www.image.net"
+        className="message-img"
+        src="www.image.net"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Message 초기 렌더링 스냅샷 일치함 1`] = `
+<div
+  className="message"
+>
+  <img
+    alt="myp1 avatar"
+    className="avatar"
+    src="http://wwww.mock-image-url1.com"
+  />
+  <div
+    className="message-content"
+  >
+    <span
+      className="display-name"
+    >
+      myp1
+    </span>
+    <div
+      className="image-wrapper"
+    >
+      <img
+        alt="www.image.net"
+        className="message-img"
+        src="www.image.net"
+      />
+    </div>
+  </div>
+</div>
+`;
