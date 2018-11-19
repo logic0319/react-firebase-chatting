@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './RoomList.module.scss';
 import firebase from '../../firebase';
 import PropTypes from 'prop-types';
-import ClipLoader from 'react-spinners/ClipLoader';
+import HashLoader from 'react-spinners/HashLoader';
 import { connect } from 'react-redux';
 import { setCurrentRoom } from '../../actions';
 
@@ -80,7 +80,7 @@ class RoomList extends Component {
 
   displaySpinner = () => (
     <div className={styles['spinner-wrapper']}>
-      <ClipLoader color="#ffffff" />
+      <HashLoader color="#ffffff" />
     </div>
   );
 
