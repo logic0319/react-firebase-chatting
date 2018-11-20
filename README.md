@@ -1,3 +1,5 @@
+### url: http://dizzy-crowd.surge.sh
+
 ### react-firebase-chatting
 React와 Firebase를 사용하여 구현된 채팅 어플리케이션 입니다. Firebase의 실시간 DB는 데이터의 변화를 실시간으로 반영할 수 있는 기능을 제공합니다. 또한 NoSQL 형식이기 때문에 많은 양의 데이터를 쌓아야하는 채팅 어플리케이션에 적합 합니다. Frontend는 create-react-app을 사용하여 구현 하였습니다. 또한 전역 상태 관리를 위해서 redux를 사용하였습니다.
 
