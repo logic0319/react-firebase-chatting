@@ -54,13 +54,13 @@ users: [{
 
 ### 실행 명령어
 1. `git clone` 명령어를 입력하여 프로젝트를 다운로드 합니다.
-2. `npm install` 명령어를 입력하여 패키지들을 설치 합니다.
+2. `yarn install` 명령어를 입력하여 패키지들을 설치 합니다.
 
 * 새로운 프로젝트를 실행하려면 firebase 프로젝트를 생성하여 설정파일을 교체해 주어야 합니다.
 
-- `npm run start`: webpack dev 서버를 사용하여 개발 서버를 실행합니다.
-- `npm run build`: 프로젝트를 빌드 합니다.
-- `npm run test`: 테스트를 실행합니다.
+- `yarn start`: webpack dev 서버를 사용하여 개발 서버를 실행합니다.
+- `yarn build`: 프로젝트를 빌드 합니다.
+- `yarn test`: 테스트를 실행합니다.
 
 ### 테스트
 유닛 테스팅을 위해서 테스트 프레임워크인 [jest](https://jestjs.io/)와 테스팅 도구 [enzyme](https://github.com/airbnb/enzyme)를 사용하였습니다.
